@@ -8,11 +8,19 @@ namespace ConsoleApplication1
 {
     class app
     {
-        int n1, n2, res;
-
+        public int n1, n2, res;
+        public static int d, m, y;
+        static app()
+        {
+            DateTime dt = DateTime.Now;
+            d = dt.Day;
+            m = dt.Month;
+            y = dt.Year;
+            Console.WriteLine("Day is {0} and month is {1} and year is {2}", d, m, y);
+        }
         public app()
         {
-            Console.WriteLine("Enter the 2 nos: "); 
+            Console.WriteLine("Enter the 2 nos: ");
             n1 = int.Parse(Console.ReadLine());
             n2 = int.Parse(Console.ReadLine());
 
@@ -28,6 +36,13 @@ namespace ConsoleApplication1
             n1 = a.n1;
             n2 = a.n2;
         }
+        public void  showdate()
+        {
+            Console.WriteLine("Day is {0} and month is {1} and year is {2}", d, m, y);
+        }
+
+
+     
         //public void SetData(int a, int b)
         //{
         //    n1 = a;
@@ -45,6 +60,16 @@ namespace ConsoleApplication1
 
             res = n1 + n2;
             return res;
+        }
+
+        private void hide()
+        {
+            res = n1 * n2;
+        }
+        public void disc()
+        {
+            hide();
+            Console.WriteLine("I am showing the res as :{0}",res);
         }
 
         public void show()
@@ -279,35 +304,195 @@ namespace ConsoleApplication1
 
         //}
     }
+
+    class val
+    {
+        public int side,lenth=10,breadth=20;
+        public void getdata()
+        {
+            Console.WriteLine("Enter the Side :");
+            side = int.Parse(Console.ReadLine());
+        }
+    }
+
+    class square : val
+    {
+        public int res;
+         public void area_sq()
+        {
+            res = side * side;
+            Console.WriteLine("The area of Square is {0}", res);
+        }
+    }
+
+    class cube: val
+    {
+        public int res1;
+        public void area_cu()
+        {
+            res1 = side * side * side;
+            Console.WriteLine(" the area of cube is {0}", res1);
+        }
+    }
+     
+    class marks
+    {
+        public int m1=92, m2=89;
+
+        public void showmarks()
+        {
+            Console.WriteLine("the marks are {0} and {1}", m1, m2);
+            Console.WriteLine("total is {0} out of 200", m1 + m2);
+        }
+    }
+
+    class info : marks
+    {
+        string name;
+        int rollno;
+
+        public void getinfo()
+        {
+            Console.WriteLine("enter the name and rollno:");
+            name = Console.ReadLine();
+            rollno = int.Parse(Console.ReadLine());
+        }
+
+        public void showinfo()
+        {
+            Console.WriteLine("The name of student is {0} and his rno is {1}", name, rollno);
+            showmarks();
+        }
+    }
+    class results : info
+    {
+        public void  getall()
+        {
+            getinfo();
+        }
+       public void show_results()
+        {
+            Console.WriteLine("-------------results--------------");
+                showinfo();
+        }
+    }
+
+    class a
+    {
+        protected string name;
+        public a(string n)
+        {
+            name = n;
+        }
+    }
+    class b:a
+    {
+        int age;
+        public b(string n,int a) : base(n)
+        {
+            age = a;
+        }
+
+        public void disp()
+        {
+            Console.WriteLine("name:{0} and age is {1}",name, age);
+        }
+    }
+
+    interface test
+    {
+        void greet();
+    }
+    interface test1
+    {
+        void greetmore();
+    }
+
+    abstract class test3
+    {
+        protected int a = 20;
+        public abstract void show();
+    }
+    class imp : test3
+    {
+        int b = 20, c;
+        public override void show()
+        {
+            c = a + b;
+            Console.WriteLine(c);
+        }
+    }
+    class tester : test, test1
+    {
+        public void greet()
+        {
+            Console.WriteLine("hello");
+        }
+
+        public void greetmore()
+        {
+            Console.WriteLine("helllllllo");
+        }
+    }
+
         class mainClass
         {
             public static void Main(string[] args)
             {
-            int val = 30;
-            app o = new app();
-           
-            Console.WriteLine("val of v b4 calling is {0}", val);
-            o.disp1(val);
-            Console.WriteLine("val of v after calling is {0}", val) ;
+
+            imp i = new imp();
+            i.show();
+
+            //tester t1 = new tester();
+            //test t = (test)t1;
+            //test1 t2 = (test1)t1;
+            //t.greet();
+            //t2.greetmore();
+            //t1.greet();
+            //t1.greetmore();
+
+            //b ob = new b("gokul", 20);
+            //ob.disp();
+
+            //results s1 = new results();
+            //s1.getinfo();
+            //s1.show_results();
+
+            //cube o1 = new cube();
+            //square o = new square();
+            //o.getdata();
+            //o.area_sq();
+            //o1.getdata();
+            //o1.area_cu();
+
+            //int val = 30;
+            //app obj = new app(20,60);
+            //obj.disc();
+            //Console.WriteLine(obj.n1);
             
-            Console.WriteLine("val of v b4 calling is {0}", val);
-            o.disp2(ref val);
-            Console.WriteLine("val of v after calling is {0}", val);
+            //app o = new app();
+            //Console.WriteLine("val of v b4 calling is {0}", val);
+            //o.disp1(val);
+            //Console.WriteLine("val of v after calling is {0}", val);
+            //Console.WriteLine("val of v b4 calling is {0}", val);
+            //o.disp2(ref val);
+            //Console.WriteLine("val of v after calling is {0}", val);
+            //o.showdate();
 
-            app o1 = new app();
-            app o2 = new app(10, 30);
-            app o3 = new app(o2);
+            //app o1 = new app();
+            //app o2 = new app(10, 30);
+            //app o3 = new app(o2);
+            ////o1.Getdata();
+            ////o1.SetData(10, 20);
+            //o1.Cal();
+            //o2.Cal();
+            //o3.Cal();
+            //o1.show();
+            //o2.show();
+            //o3.show(); 
 
-            //o1.Getdata();
-            //o1.SetData(10, 20);
-            o1.Cal();
-            o2.Cal();
-            o3.Cal();
 
-                o1.show();
-            o2.show();
-            o3.show(); 
-                Console.Read();
+            Console.Read();
             }
         }
     
