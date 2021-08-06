@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
@@ -36,13 +32,13 @@ namespace ConsoleApplication1
             n1 = a.n1;
             n2 = a.n2;
         }
-        public void  showdate()
+        public void showdate()
         {
             Console.WriteLine("Day is {0} and month is {1} and year is {2}", d, m, y);
         }
 
 
-     
+
         //public void SetData(int a, int b)
         //{
         //    n1 = a;
@@ -69,7 +65,7 @@ namespace ConsoleApplication1
         public void disc()
         {
             hide();
-            Console.WriteLine("I am showing the res as :{0}",res);
+            Console.WriteLine("I am showing the res as :{0}", res);
         }
 
         public void show()
@@ -304,28 +300,25 @@ namespace ConsoleApplication1
 
         //}
     }
-
     class val
     {
-        public int side,lenth=10,breadth=20;
+        public int side, lenth = 10, breadth = 20;
         public void getdata()
         {
             Console.WriteLine("Enter the Side :");
             side = int.Parse(Console.ReadLine());
         }
     }
-
     class square : val
     {
         public int res;
-         public void area_sq()
+        public void area_sq()
         {
             res = side * side;
             Console.WriteLine("The area of Square is {0}", res);
         }
     }
-
-    class cube: val
+    class cube : val
     {
         public int res1;
         public void area_cu()
@@ -334,10 +327,9 @@ namespace ConsoleApplication1
             Console.WriteLine(" the area of cube is {0}", res1);
         }
     }
-     
     class marks
     {
-        public int m1=92, m2=89;
+        public int m1 = 92, m2 = 89;
 
         public void showmarks()
         {
@@ -345,7 +337,6 @@ namespace ConsoleApplication1
             Console.WriteLine("total is {0} out of 200", m1 + m2);
         }
     }
-
     class info : marks
     {
         string name;
@@ -366,17 +357,16 @@ namespace ConsoleApplication1
     }
     class results : info
     {
-        public void  getall()
+        public void getall()
         {
             getinfo();
         }
-       public void show_results()
+        public void show_results()
         {
             Console.WriteLine("-------------results--------------");
-                showinfo();
+            showinfo();
         }
     }
-
     class a
     {
         protected string name;
@@ -385,20 +375,19 @@ namespace ConsoleApplication1
             name = n;
         }
     }
-    class b:a
+    class b : a
     {
         int age;
-        public b(string n,int a) : base(n)
+        public b(string n, int a) : base(n)
         {
             age = a;
         }
 
         public void disp()
         {
-            Console.WriteLine("name:{0} and age is {1}",name, age);
+            Console.WriteLine("name:{0} and age is {1}", name, age);
         }
     }
-
     interface test
     {
         void greet();
@@ -407,7 +396,6 @@ namespace ConsoleApplication1
     {
         void greetmore();
     }
-
     abstract class test3
     {
         protected int a = 20;
@@ -434,14 +422,132 @@ namespace ConsoleApplication1
             Console.WriteLine("helllllllo");
         }
     }
-
-        class mainClass
+    class fun
+    {
+        public void func()
         {
-            public static void Main(string[] args)
-            {
+            Console.WriteLine("Function without parameters");
+        }
+        public void func(int a)
+        {
+            Console.WriteLine("Function with parameter and the parameter is {0}", a);
+        }
 
-            imp i = new imp();
-            i.show();
+        public void func(long a)
+        {
+            Console.WriteLine("Function with parameter with long type and parameter is {0} ", a);
+        }
+
+        public void func(long a, int b)
+        {
+            Console.WriteLine("Function with 2 parameter with long and int type and parameters are {0} and {1} ", a, b);
+        }
+        public void func(int a, long b)
+        {
+            Console.WriteLine("Function with 2 parameter with int and long type and parameters are {0} and {1} ", a, b);
+        }
+
+    }
+    class op
+    {
+        public int a;
+
+        public op(int n)
+        {
+            a = n;
+        }
+
+        public static op operator +(op obj, op obj1)
+        {
+            return new op(obj.a + obj1.a);
+        }
+
+        public static op operator -(op obj)
+        {
+            obj.a = -obj.a;
+            return obj;
+        }
+        public void show()
+        {
+            Console.WriteLine("value is :{0}", a);
+        }
+
+
+    }
+    class one
+    {
+        virtual public void show()
+        {
+            Console.WriteLine("Hello from class one");
+        }
+    }
+    class two : one
+    {
+        public override void show()
+        {
+            Console.WriteLine("Hello from two");
+        }
+    }
+    class three : one
+    {
+        public override void show()
+        {
+            Console.WriteLine("Hello from three");
+        }
+    }
+
+    class demo
+    {
+        public static int a=10;
+       
+        public void fun()
+        {
+            a = a + 10;
+        }
+        public void show()
+        {
+            Console.WriteLine(a);
+        }
+    }
+
+    class mainClass
+    {
+        public static void Main(string[] args)
+        {
+            demo w = new demo();
+            demo w1 = new demo();
+            w.show();
+            w1.show();
+            w.fun();
+            w.show();
+            w1.show();
+
+            //one obj = new one();
+            //obj.show();
+            //obj = new two();
+            //obj.show();
+            //obj = new three();
+            //obj.show();
+
+            //op o1 = new op(4);
+            //op o2 =new op(5);
+            //op o3;
+            //o1.show();
+            //o2.show();
+            //o3 = o1 + o2;
+            //o3.show();
+            //o3 = -o3;
+            //o3.show();
+
+            //fun ob = new fun();
+            //ob.func();
+            //ob.func(3);
+            //ob.func(8L);
+            //ob.func(8L, 3);
+            //ob.func(3, 8L);
+
+            //imp i = new imp();
+            //i.show();
 
             //tester t1 = new tester();
             //test t = (test)t1;
@@ -469,7 +575,7 @@ namespace ConsoleApplication1
             //app obj = new app(20,60);
             //obj.disc();
             //Console.WriteLine(obj.n1);
-            
+
             //app o = new app();
             //Console.WriteLine("val of v b4 calling is {0}", val);
             //o.disp1(val);
@@ -493,8 +599,8 @@ namespace ConsoleApplication1
 
 
             Console.Read();
-            }
         }
-    
+    }
+
 }
 
