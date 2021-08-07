@@ -495,11 +495,10 @@ namespace ConsoleApplication1
             Console.WriteLine("Hello from three");
         }
     }
-
     class demo
     {
-        public static int a=10;
-       
+        public static int a = 10;
+
         public void fun()
         {
             a = a + 10;
@@ -509,18 +508,136 @@ namespace ConsoleApplication1
             Console.WriteLine(a);
         }
     }
+    class addnumbers
+    {
+        int res;
+        public addnumbers()
+        {
+            res = 0;
+        }
+        public void division(int num1, int num2)
+        {
+            try
+            {
+                res = num1 / num2;
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine("Exception caught {0}", e);
+            }
+            finally
+            {
+                Console.WriteLine("Result is {0}",res);
+            }
+        }
+    }
+    class AgeException : ApplicationException
+    {
+        public AgeException(string msg) : base(msg)
+        {
+
+        }
+    }
+    class emp
+    {
+        public int emp_id,age;
+        public void validate()
+        {
+            Console.WriteLine("Enter emp id and age:");
+            emp_id = int.Parse(Console.ReadLine());
+            age = int.Parse(Console.ReadLine());
+
+            if(age<21 && age > 58)
+            {
+                Console.WriteLine("Emp id is {0} and age is {1}", emp_id, age);
+            }
+            else
+            {
+                throw (new AgeException("You must be older than 21 and younger than 58"));
+            }
+        }
+
+    }
+    delegate void arithop(int x, int y);
+    delegate void show();
+    class mathop
+    {
+        public static void s1()
+        {
+            Console.WriteLine("Spain");
+        }
+        public static void s2()
+        {
+            Console.WriteLine("Madrid");
+        }
+
+        public static void add(int x, int y)
+        {
+            Console.WriteLine(x + y);
+        }
+        public static void sub(int x, int y)
+        {
+            Console.WriteLine (x - y);
+        }
+    }
 
     class mainClass
     {
         public static void Main(string[] args)
         {
-            demo w = new demo();
-            demo w1 = new demo();
-            w.show();
-            w1.show();
-            w.fun();
-            w.show();
-            w1.show();
+            //arithop op1 = new arithop(mathop.add);
+            //arithop op2 = new arithop(mathop.sub);
+            //op1(4,8);
+            //op2(19, 10);
+            //show op3 = new show(mathop.s1);
+            //op3();
+            //Console.WriteLine();
+            //show op4 = new show(mathop.s2);
+            //op4();
+            //Console.WriteLine();
+            //show op5 = op3 + op4;
+            //op5();
+            //Console.WriteLine();
+            //show op6 = op3 - op4;
+            //op6();
+
+            //emp e1 = new emp();
+            //try
+            //{
+            //    e1.validate();
+            //}
+            //catch (AgeException e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //}
+            //int a, b, c;
+            //b = 18;
+            //c = 2;
+            //int[] arr = new int[4];
+            //try
+            //{
+            //    a = b / c;
+            //    arr[9] = 7;
+
+            //}
+            //catch (DivideByZeroException e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //}
+            //catch (IndexOutOfRangeException e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //}
+            //addnumbers o1 = new addnumbers();
+            //o1.division(9, 0);
+
+            //demo w = new demo();
+            //demo w1 = new demo();
+            //w.show();
+            //w1.show();
+            //w.fun();
+            //w.show();
+            //w1.show();
 
             //one obj = new one();
             //obj.show();
