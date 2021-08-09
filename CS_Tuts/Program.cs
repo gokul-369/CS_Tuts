@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Threading;
 
 namespace ConsoleApplication1
 {
@@ -527,7 +529,7 @@ namespace ConsoleApplication1
             }
             finally
             {
-                Console.WriteLine("Result is {0}",res);
+                Console.WriteLine("Result is {0}", res);
             }
         }
     }
@@ -540,14 +542,14 @@ namespace ConsoleApplication1
     }
     class emp
     {
-        public int emp_id,age;
+        public int emp_id, age;
         public void validate()
         {
             Console.WriteLine("Enter emp id and age:");
             emp_id = int.Parse(Console.ReadLine());
             age = int.Parse(Console.ReadLine());
 
-            if(age<21 && age > 58)
+            if (age < 21 && age > 58)
             {
                 Console.WriteLine("Emp id is {0} and age is {1}", emp_id, age);
             }
@@ -577,14 +579,94 @@ namespace ConsoleApplication1
         }
         public static void sub(int x, int y)
         {
-            Console.WriteLine (x - y);
+            Console.WriteLine(x - y);
         }
+    }
+    class threadtest
+    {
+        public void DoTest()
+        {
+            Thread T1 = new Thread(new ThreadStart(Increment));
+            Thread T2 = new Thread(new ThreadStart(Decrement));
+            T1.Priority = ThreadPriority.Lowest;
+            T2.Priority = ThreadPriority.Highest;
+            T1.Start();
+            T2.Start();
+        }
+        public void Decrement()
+        {
+            for (int i = 10; i >= 0; i--)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine("Decrement ={0}", i);
+
+            }
+        }
+        public void Increment()
+        {
+            for (int i = 0; i <= 10; i++)
+            {
+                Console.WriteLine("Increment ={0}", i);
+                //Thread.Sleep(1000);
+            }
+        }
+
     }
 
     class mainClass
     {
         public static void Main(string[] args)
         {
+            Stack s = new Stack();
+
+
+            //Hashtable ht = new Hashtable();
+            //ht.Add(1, "Apple");
+            //ht.Add(2, "Ball");
+            //ht.Add(3, "Cat");
+            //ht.Add(4, "Dog");
+            //foreach (var k in ht.Keys)
+            //{
+            //    Console.WriteLine(k + ":" + ht[k]);
+            //}
+
+            //SortedList sl = new SortedList();
+            //sl.Add(5, "las");
+            //sl.Add(2, "bloke");
+            //sl.Add(3, "lad");
+            //sl.Add(4, "guy");
+            //sl.Add(1, "gal");
+            //foreach (var k in sl.Keys)
+            //{
+            //    Console.WriteLine(k + ":" + sl[k]);
+            //}
+            
+            //ArrayList n = new ArrayList(sl.Values);
+            //n.Reverse();
+            //foreach (var i in n)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //Console.WriteLine(n.Count);
+            //Console.WriteLine(n.Capacity);
+
+            //ArrayList n = new ArrayList();
+            ////n.Add(10);
+            //n.Add("chennai");
+            //n.Add("Kochi");
+            //n.Add("Bengaluru");
+            //n.Add("Amristar");
+            //n.Insert(0, "Darjiling");
+            //n.Sort();
+            //n.Reverse();
+            //foreach (var i in n){
+            //    Console.WriteLine(i);
+            //}
+            //Console.WriteLine(n.Capacity);
+
+            //threadtest t = new threadtest();
+            //t.DoTest();
+
             //arithop op1 = new arithop(mathop.add);
             //arithop op2 = new arithop(mathop.sub);
             //op1(4,8);
