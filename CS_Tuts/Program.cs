@@ -618,7 +618,24 @@ namespace ConsoleApplication1
         public static void Main(string[] args)
         {
             Stack s = new Stack();
-
+            s.Push(5);
+            s.Push("helo");
+            s.Push("369");
+            s.Push(369);
+            //Console.WriteLine(s.Peek());
+            foreach(var item in s)
+            {
+                Console.WriteLine(item+",");
+            }
+            Queue q = new Queue();
+            q.Enqueue(8);
+            q.Enqueue(9);
+            q.Enqueue(10);
+            //Console.WriteLine(q.Peek());
+            foreach (var item in q)
+            {
+                Console.WriteLine(item + ",");
+            }
 
             //Hashtable ht = new Hashtable();
             //ht.Add(1, "Apple");
@@ -640,7 +657,7 @@ namespace ConsoleApplication1
             //{
             //    Console.WriteLine(k + ":" + sl[k]);
             //}
-            
+
             //ArrayList n = new ArrayList(sl.Values);
             //n.Reverse();
             //foreach (var i in n)
